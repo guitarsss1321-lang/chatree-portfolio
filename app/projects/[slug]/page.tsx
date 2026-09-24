@@ -21,7 +21,7 @@ type Project = {
         name: string;
         slug: string;
         description: string | null;
-      }
+      }[]
     | null;
 };
 
@@ -77,7 +77,7 @@ export default async function ProjectDetailPage({
 
   const project = projectData as Project;
 
-  const category = project.categories;
+  const category = project.categories?.[0] ?? null;
 
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900">
