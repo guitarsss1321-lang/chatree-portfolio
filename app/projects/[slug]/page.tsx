@@ -36,6 +36,9 @@ export default async function ProjectDetailPage({
 }: PageProps) {
   const { slug } = await params;
 
+  // รองรับ Slug ภาษาไทยและอักขระที่ถูก encode มากับ URL
+  const decodedSlug = decodeURIComponent(slug).trim();
+
   const supabase = await createClient();
 
   const { data: projectData, error } = await supabase
@@ -62,7 +65,7 @@ export default async function ProjectDetailPage({
         )
       `
     )
-    .eq("slug", slug)
+    .eq("slug", decodedSlug)
     .eq("is_published", true)
     .maybeSingle();
 
