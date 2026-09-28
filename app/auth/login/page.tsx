@@ -2,11 +2,9 @@
 
 import { FormEvent, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 
 export default function LoginPage() {
-  const router = useRouter();
   const supabase = createClient();
 
   const [email, setEmail] = useState("");
@@ -31,14 +29,15 @@ export default function LoginPage() {
       return;
     }
 
-    router.push("/admin");
-    router.refresh();
+    // ใช้ full browser navigation หลัง Login สำเร็จ
+    // เพื่อให้ Supabase Auth cookies ถูกส่งไปกับ request /admin
+    // และไม่ต้องกด Reload เอง
+    window.location.assign("/admin");
   }
 
   return (
     <main className="min-h-screen bg-slate-50 px-6 py-16">
       <div className="mx-auto max-w-md">
-
         {/* Header */}
         <div className="mb-8 text-center">
           <Link
@@ -55,7 +54,6 @@ export default function LoginPage() {
 
         {/* Login Card */}
         <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
-
           <div className="mb-8">
             <h1 className="text-3xl font-black text-slate-900">
               เข้าสู่ระบบ
@@ -66,11 +64,7 @@ export default function LoginPage() {
             </p>
           </div>
 
-          <form
-            onSubmit={handleLogin}
-            className="space-y-5"
-          >
-
+          <form onSubmit={handleLogin} className="space-y-5">
             {/* Email */}
             <div>
               <label
@@ -137,7 +131,6 @@ export default function LoginPage() {
             >
               {loading ? "กำลังเข้าสู่ระบบ..." : "เข้าสู่ระบบ"}
             </button>
-
           </form>
 
           {/* Back */}
@@ -149,9 +142,7 @@ export default function LoginPage() {
               ← กลับหน้า Portfolio
             </Link>
           </div>
-
         </div>
-
       </div>
     </main>
   );
