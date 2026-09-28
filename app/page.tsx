@@ -310,11 +310,46 @@ export default async function HomePage() {
         <div className="rounded-3xl bg-gradient-to-r from-blue-950 to-blue-700 px-8 py-12 text-white md:px-12">
           <p className="text-sm font-bold uppercase tracking-widest text-blue-200">Contact</p>
           <h2 className="mt-3 text-3xl font-black md:text-4xl">ติดต่อ</h2>
-          <div className="mt-8 grid gap-4 text-blue-50">
-            <div>
-              <span className="font-semibold text-white">หน่วยงาน:</span>{" "}
-              {profileData?.institution || "วิทยาลัยเทคนิคชุมแพ"}
+
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="rounded-2xl border border-white/10 bg-white/10 p-5 backdrop-blur-sm">
+              <div className="text-2xl">🏫</div>
+              <div className="mt-3 text-sm font-semibold text-blue-200">หน่วยงาน</div>
+              <div className="mt-1 font-medium text-white">
+                {profileData?.institution || "วิทยาลัยเทคนิคชุมแพ"}
+              </div>
             </div>
+
+            <a
+              href="https://www.facebook.com/search/top?q=%E0%B8%8A%E0%B8%B2%E0%B8%95%E0%B8%A3%E0%B8%B5%20%E0%B9%82%E0%B8%A2%E0%B8%98%E0%B8%B2%E0%B8%98%E0%B8%A3%E0%B8%A3%E0%B8%A1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-2xl border border-white/10 bg-white/10 p-5 backdrop-blur-sm transition hover:-translate-y-1 hover:bg-white/20"
+            >
+              <div className="text-2xl">🔵</div>
+              <div className="mt-3 text-sm font-semibold text-blue-200">Facebook</div>
+              <div className="mt-1 font-medium text-white">ชาตรี โยธาธรรม</div>
+            </a>
+
+            <a
+              href="https://line.me/ti/p/~guitarsss1321"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-2xl border border-white/10 bg-white/10 p-5 backdrop-blur-sm transition hover:-translate-y-1 hover:bg-white/20"
+            >
+              <div className="text-2xl">🟢</div>
+              <div className="mt-3 text-sm font-semibold text-blue-200">LINE</div>
+              <div className="mt-1 font-medium text-white">guitarsss1321</div>
+            </a>
+
+            <a
+              href="tel:0973030027"
+              className="rounded-2xl border border-white/10 bg-white/10 p-5 backdrop-blur-sm transition hover:-translate-y-1 hover:bg-white/20"
+            >
+              <div className="text-2xl">📞</div>
+              <div className="mt-3 text-sm font-semibold text-blue-200">โทรศัพท์</div>
+              <div className="mt-1 font-medium text-white">097-303-0027</div>
+            </a>
           </div>
         </div>
       </section>
